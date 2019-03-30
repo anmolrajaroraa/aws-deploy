@@ -1,0 +1,53 @@
+<div id="header_container" >
+  <mat-toolbar class="small_text">
+    <span class="space"></span>
+    <span><mat-icon>phone</mat-icon>1800-678-449</span>
+  
+    <span class="smallspace" (click)="displayblock()">Address</span>
+     <div *ngIf="display" id ="addressDetails">
+        <form [formGroup]="address" id="details">
+        <mat-select placeholder="State" formControlName="state" >
+    
+            <mat-option *ngFor="let statevalue of statelist" 
+            [value]="statevalue.code">{{statevalue.name}}</mat-option>
+           
+          </mat-select>
+        </form>
+        </div>
+        
+   
+  </mat-toolbar>  
+  <mat-toolbar id="titlebar" >  
+        <mat-toolbar-row>
+          
+          <span class="space"></span>
+<span>
+
+    <form class="example-form" [formGroup]="searchQuery">
+        <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Search" matInput formControlName="searchlist" [matAutocomplete]="auto">
+            <mat-icon class="box">search</mat-icon>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+              
+            </mat-autocomplete>
+          </mat-form-field>
+</form>
+
+</span>
+          <span class="space"></span>
+        
+          <span>
+             <a routerLink='/userPlan'>
+              <mat-icon>person</mat-icon>
+            </a> </span>
+        
+        </mat-toolbar-row>
+      
+     
+      </mat-toolbar>
+</div> 
+
+

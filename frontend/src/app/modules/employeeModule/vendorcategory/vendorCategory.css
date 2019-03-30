@@ -1,0 +1,47 @@
+.hide{
+    display: none;
+}
+
+.show{
+    display: show;
+}
+.main_head{
+font-size: 1.1rem;
+
+}
+.sub_head{
+    font-size:1rem;
+ margin:0.2rem 0px 0rem 2rem;
+}
+
+.data_section{
+    text-align: left !important;
+
+
+}
+.flexcontainer{
+    display:flex;
+}
+
+.final_data{
+font-size:0.8rem;
+margin:0.2rem 0px 0rem 2.5rem;
+}
+
+#categorylist{
+    margin:1rem auto;
+    width:60%;
+}
+
+::ng-deep #categorylist .mat-form-field-appearance-legacy .mat-form-field-underline{
+display:none;}
+
+
+::ng-deep #categorylist .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+    padding-bottom:0px !important;
+}
+#categorylist input{
+    padding:0.5rem 0.5rem;
+    border:1px solid black;
+    border-radius:3%;
+}

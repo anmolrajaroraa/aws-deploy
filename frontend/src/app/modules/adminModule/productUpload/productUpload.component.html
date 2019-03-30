@@ -1,0 +1,92 @@
+<adminheader></adminheader>
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="SINGLE UPLOAD"> 
+      <div id='stackTrace'>
+        <span *ngFor='let id of parentTrace;let i =index;'>
+          {{id}}<span *ngIf="parentTrace[i+1]">-></span>
+        </span>
+        </div>
+      
+      <div class="flexcontainer">
+        <div class="container"> 
+      <div class="imageUploadSection">
+          <mat-grid-list cols="8" rowHeight="2:1">
+              <mat-grid-tile colspan='4' rowspan='6'>
+             
+                <mat-card *ngIf="  activeImageObj!=null && activeImageObj.uri!=null " class="activeImageCard">
+                    <mat-card-header>
+                        {{subproductFullData.subproductName}}
+                      </mat-card-header>
+                  <div id="imageSection">
+                  <span *ngIf='activeImageObj!=null'>{{activeImageObj.index}}</span>
+                   <div id="image_container">
+                      <img *ngIf='activeImageObj.uri!=null' [src]="activeImageObj.uri" >
+      
+                       </div>
+                </div>
+                </mat-card>
+              </mat-grid-tile>
+              <mat-grid-tile colspan ='4' rowspan='2'>
+                <div id="upload_container">
+                <mat-card class="file_upload">
+                      <mat-card-header class="card_title">
+                      
+                        <mat-card-title >Upload Image</mat-card-title>
+                        
+                      </mat-card-header>
+                      <mat-card-actions>
+                          <label class="custom-file-upload">
+                              Upload Image<input type="file" name="uploadImage" 
+                              accept=".jpg,.jpeg,.png" (change)="imageUpload(uploadImage)" #uploadImage ></label>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+        
+              </mat-grid-tile> 
+              <mat-grid-tile colspan ='4' rowspan='6'>
+      
+                  <app-subproducts-data id="subproductData"></app-subproducts-data>
+                        </mat-grid-tile> 
+                    
+      
+      
+              <mat-grid-tile colspan='4' rowspan='1'> 
+      <div id="imageList">
+        
+        <div *ngIf="imageList!=null"  id="imagelist_container">
+         <div *ngFor='let imageObj of imageList' class="csssetting">
+           <button mat-button *ngIf='activeImageObj!=null' [ngClass]="{'active': activeImageObj.selected==true }" class='image' (click)="selectImage(imageObj)">
+        
+            <img *ngIf='imageObj.uri!=null' [src]='imageObj.uri' alt="Product List">
+           
+           </button>
+           <span (click)="removeThisImage(imageObj.index)" class="clear"><mat-icon>clear</mat-icon></span> 
+      
+         </div>
+        </div>
+        
+      </div>
+      
+              </mat-grid-tile>
+            
+            </mat-grid-list>
+      </div>
+      </div>
+      </div></mat-tab>
+      <mat-tab label="ADD BULK LIST">
+
+          <div>
+                  <label class="custom-file-upload dropdown">
+                  Excel File<input type="file" name="productupload" accept=".xlsx, .xls, .csv" (change)="OnChange(productupload)" #productupload >
+                  </label> 
+                  </div> 
+                  <button mat-raised-button class="uploadButton" type="button" [disabled]="!isSelected" 
+                  (click)="uploadExcel()">Upload All</button>
+                           
+  
+      
+  
+  </mat-tab>
+   
+  </mat-tab-group>

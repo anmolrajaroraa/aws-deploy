@@ -1,0 +1,56 @@
+<div id ="dataEntry">
+
+  <form [formGroup]="dataForm" id="form"  (ngSubmit)='onSubmit(dataForm.value)'>
+    <div>
+    <mat-form-field id ="description">
+       <mat-label>Description</mat-label>
+        <textarea matInput formControlName='description' ></textarea>
+      </mat-form-field>
+      <mat-form-field id ="benefitsAndUses">
+        <mat-label>Benefits And Uses</mat-label>
+          <textarea matInput formControlName='benefitsAndUses' ></textarea>
+        </mat-form-field>
+    </div>
+        <div formArrayName="priceAndAmount" *ngFor ="let priceObj of dataForm.controls.priceAndAmount.controls; let i = index;">
+          <div class="flexcontainer" formGroupName ='{{i}}'> 
+         <div class="amount">
+            <mat-form-field >
+              <mat-label>Amount</mat-label>
+            <input matInput formControlName='amount' >
+          
+          </mat-form-field>
+          </div>
+          <div class="suffix">
+          <mat-form-field > 
+            <mat-label>Suffix</mat-label>
+              <input matInput formControlName='suffix'>
+            
+            </mat-form-field>
+            </div>
+            <div class="price">
+            <mat-form-field>
+              <mat-label>Price</mat-label>
+                <input matInput formControlName='price' >
+              
+              </mat-form-field>
+              </div>
+              <div class="discount">
+              <mat-form-field>
+                <mat-label>Discount</mat-label>
+                  <input matInput formControlName='discount' >
+                
+                </mat-form-field>
+                </div>
+                <div>
+                  <button mat-raised-button type="button" color='accent' (click)='deleteThisIndex(i)'>Delete</button>
+                </div>
+              </div>
+        </div>
+
+        <button mat-raised-button color='accent' type='button' (click)='addOptions()'>Add</button>
+        
+        <button mat-raised-button color='primary' [disabled]='dataForm.invalid'>
+Submit
+        </button>
+</form>
+</div>

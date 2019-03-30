@@ -1,0 +1,163 @@
+
+  .parentContainer{
+      display: flex;
+      justify-content: center;
+  }
+
+  .detailcontainer > * {
+    width: 100%;
+    
+  }
+
+
+  .detailcontainer{
+      margin:auto 2rem 1rem 2rem;
+  }
+ .groupedDetails .mat-form-field{
+    
+     width:47%;
+ } 
+
+ .mat-radio-button{
+     margin:1rem;
+ }
+
+ .flexcontainer{
+     
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+
+ }
+
+
+
+
+
+ .label{
+    font-size: 16px;
+    color: gray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#kyc_documents{
+    margin-bottom:1.5rem;
+}
+  
+input[type="file"]{
+    display:none;
+}
+
+.custom_file_upload{
+    border:1px solid grey;
+    
+    display:inline-block;
+    padding:0.5rem;
+    cursor: pointer;
+}
+
+legend {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    text-align:left;
+    font-size: 1rem;
+
+  }
+  fieldset{
+    border: 1px solid gainsboro;
+    border-radius: 2%;
+    color: dimgrey;
+
+  }
+
+  .custom-file-upload {
+  
+    display: inline-block;
+    padding: 6px 12px;
+    text-align: center;
+    background-color:#FF007B;
+    border-radius: 5px;
+    cursor: pointer;
+    color:white;
+  }
+  .custom-file-upload:hover{
+    background-color:#004B89;
+    
+  }
+  
+  
+  .dropdown{
+    position: relative;
+    width: 89%;
+  }
+  .upload{
+      
+      background-color:#004B89;
+     
+      color:white;
+
+  }
+
+  ::ng-deep .mat-form-field-infix{
+      width:15rem !important; 
+  }
+
+@media only screen and (max-width: 588px) {
+   ::ng-deep .groupedDetails .mat-form-field{
+  margin:auto 0px !important;
+  width:100% !important;
+}
+    }
+
+.button_fixed_size{
+    
+    width:88px !important;
+    }
+
+
+#documentdetails{
+    margin:0.25rem auto;
+}
+
+.detailcontainer .mat-icon{
+    color:#FF007B;
+}
+
+ ::ng-deep .detailcontainer .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-datepicker-toggle-default-icon {
+    margin: auto;
+    color:#FF007B;
+}
+
+::ng-deep .detailcontainer .mat-select-arrow{
+    color:#FF007B;
+}
+
+
+.uploadSection > *{
+    width:100%;
+}
+
+[hidden] {
+     display: none !important;}
+
+
+
+.uploadButton{
+    width:40%;
+    padding-top:0.4rem;
+    margin-top:0px !important;
+   margin-bottom: 0.5rem !important;
+}
+
+
+.uploadButton{
+    border-radius:3%;
+   margin:auto 1rem auto 1rem;
+    background-color:#004b89;
+     color:white;
+}
+

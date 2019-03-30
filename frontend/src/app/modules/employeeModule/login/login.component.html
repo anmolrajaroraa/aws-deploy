@@ -1,0 +1,28 @@
+<div >
+   
+   <form [formGroup]="loginDetails" (ngSubmit)="onLogin(loginDetails.value)" class="signin">
+        <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+          <input matInput placeholder="Username" formControlName="Name">
+          <mat-error *ngFor="let validation of error_messages.name">
+                <mat-error class="error-message" *ngIf="loginDetails.get('Name').hasError(validation.type) && 
+                (loginDetails.get('Name').dirty || 
+                loginDetails.get('Name').touched)">{{validation.message}}</mat-error>
+                 </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field appearance ="outline">
+            <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" formControlName="password">
+          <mat-error *ngFor="let validation of error_messages.pwd">
+                <mat-error class="error-message" *ngIf="loginDetails.get('password').hasError(validation.type) && 
+                (loginDetails.get('password').dirty || 
+                loginDetails.get('password').touched)">{{validation.message}}</mat-error>
+                 </mat-error>
+          
+        </mat-form-field>
+
+        <button mat-raised-button color="accent">Sign In</button>
+    </form>
+        
+      </div>

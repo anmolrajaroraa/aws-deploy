@@ -1,0 +1,46 @@
+<adminheader></adminheader>
+<div class="flexcontainer">
+<mat-card id="login_container">
+      <mat-card-header>Sign In</mat-card-header>
+    <mat-card-content>
+    <div>
+
+        <form [formGroup]="loginDetails" (ngSubmit)="onLogin(loginDetails.value)" class="signin">
+                <mat-form-field appearance="outline">
+                        <mat-label>Id</mat-label>
+                  <input matInput placeholder="Username" formControlName="id">
+                  <mat-error *ngFor="let validation of error_messages.id">
+                        <mat-error class="error-message" *ngIf="loginDetails.get('id').hasError(validation.type) && 
+                        (loginDetails.get('id').dirty || 
+                        loginDetails.get('id').touched)">{{validation.message}}</mat-error>
+                         </mat-error>
+                </mat-form-field>
+           
+            <mat-form-field appearance="outline">
+                     <mat-label>Name</mat-label>
+               <input matInput placeholder="Username" formControlName="name">
+               <mat-error *ngFor="let validation of error_messages.name">
+                     <mat-error class="error-message" *ngIf="loginDetails.get('name').hasError(validation.type) && 
+                     (loginDetails.get('name').dirty || 
+                     loginDetails.get('name').touched)">{{validation.message}}</mat-error>
+                      </mat-error>
+             </mat-form-field>
+           
+             <mat-form-field appearance ="outline">
+                 <mat-label>Password</mat-label>
+               <input matInput placeholder="Password" formControlName="password">
+               <mat-error *ngFor="let validation of error_messages.pwd">
+                     <mat-error class="error-message" *ngIf="loginDetails.get('password').hasError(validation.type) && 
+                     (loginDetails.get('password').dirty || 
+                     loginDetails.get('password').touched)">{{validation.message}}</mat-error>
+                      </mat-error>
+               
+             </mat-form-field>
+     
+             <button mat-raised-button [disabled]="loginDetails.invalid" color="accent">Sign In</button>
+         </form>
+             
+           </div>
+           </mat-card-content>
+           </mat-card>
+           </div>

@@ -1,0 +1,339 @@
+
+<div class='parentContainer'>
+
+ <form class="detailcontainer" [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" >
+<mat-form-field appearance="standard">
+    
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Fill name in the field" type="text" formControlName="name">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>4 Min Characters</mat-hint>
+    <mat-error *ngFor="let validation of error_messages.name">
+            <mat-error class="error-message" *ngIf="userform.get('name').hasError(validation.type) &&
+             (userform.get('name').dirty || userform.get('name').touched)">{{validation.message}}</mat-error>
+             
+        </mat-error>
+</mat-form-field>
+        <mat-form-field appearance="standard">
+    
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Fill Password in the field" type="password" formControlName="password" (blur)="outfocus()" (focus)="onfocus()">
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-hint>Alpha Numeric</mat-hint>
+                <mat-error *ngFor="let validation of error_messages.pwd">
+                        <mat-error class="error-message" *ngIf="userform.get('password').hasError(validation.type) &&
+                         (userform.get('password').dirty || userform.get('password').touched)">{{validation.message}}</mat-error>
+                         
+                    </mat-error>
+                    <div *ngIf="focused">{{userform.get('password').value}}</div>
+  
+</mat-form-field>
+<div class="flexcontainer groupedDetails" formGroupName="address">
+
+        <mat-form-field id="text_area" appearance="standard">
+    
+    <mat-label>Address</mat-label>
+    <textarea matInput placeholder="Fill your address"  formControlName="fulladdress">
+ </textarea>
+    <mat-icon matSuffix>home</mat-icon>
+    <mat-hint>Full Address</mat-hint>
+    <mat-error *ngFor="let validation of error_messages.address">
+                <mat-error class="error-message" *ngIf="userform.get('address.fulladdress').hasError(validation.type) &&
+                 (userform.get('address.fulladdress').dirty || userform.get('address.fulladdress').touched)">{{validation.message}}</mat-error>
+                 
+            </mat-error>
+</mat-form-field>
+
+
+
+    <mat-form-field appearance="standard">
+    
+        <mat-label>Street</mat-label>
+        <input matInput placeholder="Fill street in the field" formControlName="street">
+        <mat-icon matSuffix>streetview</mat-icon>
+        <mat-hint>Street No/Landmarks</mat-hint>
+        <mat-error *ngFor="let validation of error_messages.address">
+                        <mat-error class="error-message" *ngIf="userform.get('address.street').hasError(validation.type) &&
+                         (userform.get('address.street').dirty || userform.get('address.street').touched)">{{validation.message}}</mat-error>
+                         
+                    </mat-error>
+      
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        
+        <mat-label>City</mat-label>
+        <input matInput placeholder="Fill City in the field" formControlName="city">
+        <mat-error *ngFor="let validation of error_messages.name">
+                        <mat-error class="error-message" *ngIf="userform.get('address.city').hasError(validation.type) &&
+                         (userform.get('address.city').dirty || userform.get('address.city').touched)">{{validation.message}}</mat-error>
+                         
+                    </mat-error>
+        
+         
+      
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        
+            <mat-select placeholder="State" formControlName="state" >
+    
+                    <mat-option *ngFor="let statevalue of statelist" 
+                    [value]="statevalue.name">{{statevalue.name}}</mat-option>
+                   
+                  </mat-select>
+                 
+                    
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+        
+        <mat-label>PinCode</mat-label>
+        <input matInput placeholder="Fill the pincode in this field" formControlName="pin_code">
+      
+        <mat-hint >Only numbers</mat-hint>
+        <mat-error *ngFor="let validation of error_messages.pincode">
+                <mat-error class="error-message" *ngIf="userform.get('address.pin_code').hasError(validation.type) && (userform.get('address.pin_code').dirty || userform.get('address.pin_code').touched)">{{validation.message}}</mat-error>
+                 
+            </mat-error>
+    </mat-form-field>
+  
+
+</div>
+
+<mat-form-field appearance="standard" >
+    
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Fill your email address" formControlName="email">
+    <mat-icon matSuffix>email</mat-icon>
+    <mat-hint>@ must be present</mat-hint>
+    <mat-error *ngFor="let validation of error_messages.emailid">
+            <mat-error class="error-message" *ngIf="userform.get('email').hasError(validation.type) &&
+             (userform.get('email').dirty || userform.get('email').touched)">
+             {{validation.message}}</mat-error>
+             
+            
+        </mat-error>
+       
+</mat-form-field>
+<mat-form-field appearance="standard">
+    
+        <mat-label>Mobile No</mat-label>
+        <input matInput placeholder="Fill your moible no" formControlName="mobile_no" >
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-hint>Only numbers</mat-hint>
+        <mat-error *ngFor="let validation of error_messages.mobileNo">
+                <mat-error class="error-message" *ngIf="userform.get('mobile_no').hasError(validation.type) && 
+                (userform.get('mobile_no').dirty || userform.get('mobile_no').touched)">
+                {{validation.message}}</mat-error>
+                 
+            </mat-error>
+            
+    </mat-form-field>
+   
+   
+    <mat-form-field appearance="standard">
+        <input matInput [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" placeholder="Fill your date of birth" formControlName="date_of_birth" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+        <mat-hint>MM/DD/YYYY Format</mat-hint>
+        <mat-error *ngFor="let validation of error_messages.dob">
+                        <mat-error class="error-message" *ngIf="userform.get('date_of_birth').hasError(validation.type) && 
+                        (userform.get('date_of_birth').dirty || userform.get('date_of_birth').touched)">
+                        {{validation.message}}</mat-error>
+                         
+                    </mat-error>  
+</mat-form-field>
+   
+   
+   
+        <mat-form-field appearance="standard">
+    
+                        <mat-label>Referral Code</mat-label>
+                        <input matInput placeholder="Fill Your Referral Code If Any" formControlName="referralCode">
+                       
+                       <mat-hint>Optional</mat-hint>
+                        <mat-error *ngFor="let validation of error_messages.referral">
+                                <mat-error class="error-message" *ngIf="userform.get('referralCode').hasError(validation.type) && 
+                                (userform.get('referralCode').dirty || userform.get('referralCode').touched)">
+                                {{validation.message}}</mat-error>
+                                 
+                            </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="standard">
+    
+                        <mat-label>Nominee Name</mat-label>
+                        <input matInput placeholder="Fill Nominee name in the field" type="text" formControlName="nominee">
+                    
+                        <mat-hint>4 Min Characters</mat-hint>
+                        <mat-error *ngFor="let validation of error_messages.name">
+                                <mat-error class="error-message" *ngIf="userform.get('nominee').hasError(validation.type) &&
+                                 (userform.get('nominee').dirty || userform.get('nominee').touched)">{{validation.message}}</mat-error>
+                                 
+                            </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="standard">
+    
+                        <mat-label>Nominee Relation</mat-label>
+                        <input matInput placeholder="Fill Your Relation with Nominee" type="text" formControlName="nomineeRel">
+                       
+                        <mat-hint>Your Relation with Nominee</mat-hint>
+                        <mat-error *ngFor="let validation of error_messages.name">
+                                <mat-error class="error-message" *ngIf="userform.get('name').hasError(validation.type) &&
+                                 (userform.get('name').dirty || userform.get('name').touched)">{{validation.message}}</mat-error>
+                                 
+                            </mat-error>
+                    </mat-form-field>
+                   
+                    <fieldset>
+                        <legend>Qualification</legend>
+                              <mat-radio-group formControlName="qualification">
+                                        <mat-radio-button value="10pass">10 Pass</mat-radio-button>
+                                    <mat-radio-button value="12pass">12 Pass</mat-radio-button>
+                                    <mat-radio-button value="undergraduate">UnderGraduate</mat-radio-button>
+                                    <mat-radio-button value="Graduate">Graduate</mat-radio-button>
+                                   
+                                  </mat-radio-group > 
+                               </fieldset>
+
+        <fieldset>
+            <legend>Proffession</legend>
+                  <mat-radio-group formControlName="typeEmployee">
+                        <mat-radio-button value="executive">Executive</mat-radio-button>
+                        <mat-radio-button value="delivery_Man">Delivery Man</mat-radio-button>
+                        <mat-radio-button value="Vendor">Vendor</mat-radio-button>
+                      </mat-radio-group > 
+                   </fieldset>
+                  
+                   <fieldset>
+                    <legend>Gender</legend>
+                          <mat-radio-group formControlName="gender">
+                                <mat-radio-button value="Male">Male</mat-radio-button>
+                                <mat-radio-button value="Female">Female</mat-radio-button>
+                              </mat-radio-group > 
+                           </fieldset>
+          
+                  
+                  <div formGroupName="documents" id="documentdetails" class="flexcontainer groupedDetails">
+                      
+                        <mat-form-field appearance="outline" *ngIf="userform.get('typeEmployee').value=='Vendor'">
+                                <mat-label>GST Number</mat-label>
+                                <input matInput placeholder="GST Number" formControlName = "GSTNumber">
+                               <mat-hint>GSTIN Format</mat-hint>
+                                <mat-error *ngFor="let validation of error_messages.gstNumber">
+                                        <mat-error class="error-message" *ngIf="userform.get('documents.GSTNumber').hasError(validation.type) && 
+                                        (userform.get('documents.GSTNumber').dirty || userform.get('documents.GSTNumber').touched)">
+                                            {{validation.message}}</mat-error>
+                                         
+                                    </mat-error>  
+    
+                              </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Addhar No</mat-label>
+                            <input matInput placeholder="Addhar No" formControlName = "adhno">
+                           <mat-hint>XXXX XXXX XXXX Format Optional</mat-hint>
+                            <mat-error *ngFor="let validation of error_messages.adharNo">
+                                    <mat-error class="error-message" *ngIf="userform.get('documents.adhno').hasError(validation.type) && 
+                                    (userform.get('documents.adhno').dirty || userform.get('documents.adhno').touched)">
+                                        {{validation.message}}</mat-error>
+                                     
+                                </mat-error>  
+
+                          </mat-form-field>
+                          
+                       
+                        <mat-form-field appearance="outline">
+                              <mat-label>Nominee Adhar Card No</mat-label>
+                                <input matInput placeholder="Nominee" formControlName="nomineeAdhno">
+                                <mat-hint>XXXX XXXX XXXX Format </mat-hint>
+                                <mat-error *ngFor="let validation of error_messages.adhno">
+                                      <mat-error class="error-message" *ngIf="userform.get('documents.nomineeAdhno').hasError(validation.type) && 
+                                      (userform.get('documents.nomineeAdhno').dirty || userform.get('documents.nomineeAdhno').touched)">
+                                      {{validation.message}}</mat-error>
+                                       
+                                  </mat-error>  
+                              </mat-form-field>
+                          
+                          <mat-form-field appearance="outline">
+                                <mat-label>Bank Account No</mat-label>     
+                            <input matInput placeholder="Bank Account No" formControlName="bankacno">
+                            <mat-error *ngFor="let validation of error_messages.bankNo">
+                                    <mat-error class="error-message" *ngIf="userform.get('documents.bankacno').hasError(validation.type) && 
+                                    (userform.get('documents.bankacno').dirty || userform.get('documents.bankacno').touched)">
+                                        {{validation.message}}</mat-error>
+                                     
+                                </mat-error>     
+                        </mat-form-field>
+                          <mat-form-field appearance="outline">
+                                <mat-label>Pan Card No</mat-label>     
+                            <input matInput placeholder="Pan Card No" formControlName="pancardno">
+                            <mat-error *ngFor="let validation of error_messages.panNo">
+                                    <mat-error class="error-message" *ngIf="userform.get('documents.pancardno').hasError(validation.type) && 
+                                    (userform.get('documents.pancardno').dirty || userform.get('documents.pancardno').touched)">
+                                        {{validation.message}}</mat-error>
+                                     
+                                </mat-error>   
+                       </mat-form-field>
+                  </div>
+                          <div id="kyc_documents">
+                          <label class="label">All KYC Documents *</label>
+                          <button type="button" mat-raised-button (click)="display()" class="upload" >Upload</button>
+                       <div *ngIf="decide">
+                        <div class="uploadSection">
+                        <div >
+                        <label class="custom-file-upload dropdown">
+                        Police Verification<input type="file" name="policeVerification" accept=".jpg,.jpeg,.png" (change)="OnChange(policeVerification)" #policeVerification >
+                        <mat-progress-bar  class="spinner"  *ngIf="policeVerification.files[0]!=null"  [mode]="uploadProgress.policeVerification==true?'indeterminate':'null'"  [value]="100"></mat-progress-bar>        
+                </label> 
+                        
+                        
+                       </div>
+                        <div>
+                         <label class="custom-file-upload dropdown">
+                         Cancel Cheque<input type="file" name="cancelCheque" accept=".jpg,.jpeg,.png" (change)="OnChange(cancelCheque)" #cancelCheque >
+                         <mat-progress-bar class="spinner"   *ngIf="cancelCheque.files[0]!=null"  [mode]="uploadProgress.cancelCheque==true?'indeterminate':'null'"  [value]="100"></mat-progress-bar>
+                        </label> 
+                         
+                        
+                         </div> 
+                       
+                        <div >
+                        <label class="custom-file-upload dropdown">
+                        Adhar Card <input type="file" name="addressProof" accept=".jpg,.jpeg,.png" (change)="OnChange(addressProof)" #addressProof >
+                        <mat-progress-bar class="spinner"  *ngIf="addressProof.files[0]!=null" [mode]="uploadProgress.addressProof==true?'indeterminate':'null'"  [value]="100"></mat-progress-bar>
+                       </label> 
+                        </div>
+                               
+                        <div *ngIf="userform.get('documents.GSTNumber').value!==null && userform.get('documents.GSTNumber').value!='' && userform.get('documents.GSTNumber').valid">
+                       <label class="custom-file-upload dropdown">
+                       GST Documents<input type="file" name="gST" accept=".jpg,.jpeg,.png" (change)="OnChange(gST)" #gST >
+                       <mat-progress-bar class="spinner"  *ngIf="gST.files[0]!=null" [mode]="uploadProgress.gST==true?'indeterminate':'null'" [value]="100"></mat-progress-bar>      
+                </label> 
+                       </div>
+                                       
+                       <div >
+                       <label class="custom-file-upload dropdown">
+                        Nominee Document<input type="file" name="nomineePhoto" accept=".jpg,.jpeg,.png" (change)="OnChange(nomineePhoto)" #nomineePhoto >
+                        <mat-progress-bar class="spinner"   *ngIf="nomineePhoto.files[0]!=null"  [mode]="uploadProgress.nomineePhoto==true?'indeterminate':'null'" [value]="100"></mat-progress-bar>      
+                </label> 
+                        </div>
+
+                      <div *ngIf="userform.get('documents.pancardno').value!=null && userform.get('documents.pancardno').value!='' && userform.get('documents.pancardno').valid">
+                      <label class="custom-file-upload dropdown">
+                        Pan Card <input type="file" name="panCardPhoto" accept=".jpg,.jpeg,.png" #panCardPhoto (change)="OnChange(panCardPhoto)" >
+                        <mat-progress-bar class="spinner"  *ngIf="panCardPhoto.files[0]!=null"  [mode]="uploadProgress.panCardPhoto==true?'indeterminate':'null'"  [value]="100"></mat-progress-bar>              
+                </label>  </div>
+                          </div>
+                   
+                       <button mat-raised-button type="button" [disabled]="!isUploadTrue() || userform.get('mobile_no').invalid" class="uploadButton"  (click)="uploadPhoto()">Upload All</button>
+                         </div> 
+                         
+                        </div>
+
+                        
+                          <button mat-raised-button class="button_fixed_size" [disabled]="userform.invalid || !isSubmit"  color="accent" >Submit</button>
+                          
+                      
+                      </form>
+
+</div>

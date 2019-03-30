@@ -1,0 +1,131 @@
+.hide{
+    display: none;
+}
+
+.show{
+    display: show;
+}
+
+
+.data_section{
+    text-align: center !important;
+   
+
+
+
+}
+
+#category_container{
+    width: 60%;
+    
+margin:0rem 1rem;
+}
+.flexcontainer{
+    padding:1rem;
+ display: flex;
+}
+
+#categorylist{
+    margin:1rem;
+   width:100%;
+    position: relative;
+   
+    
+
+}
+
+.table_content{
+width:40%;
+}
+
+.parentNode{
+    position: absolute;
+    left:0%;
+    top:0%;
+    width:20%;
+}
+
+
+.final_data{
+font-size:1rem;
+margin:0.2rem 0px 0rem 2.5rem;
+}
+
+::ng-deep .material-icons{
+font-size: 1rem !important;
+    
+}
+
+
+::ng-deep #categorylist .mat-form-field-appearance-legacy .mat-form-field-underline{
+display:none;}
+
+
+::ng-deep #categorylist .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+    padding-bottom:0px !important;
+}
+.dataEntry{
+   
+    width:100%;
+}
+
+
+.firstNodeItem{
+
+position: absolute;
+
+width:100%;
+left:165px;
+top:0%;
+
+}
+
+
+.secondNodeItem{
+   
+    position: absolute;
+   
+    width:100%;
+    left:200px;
+    top:0%;
+    margin-left:1rem;
+    }
+
+    .thirdNodeItem{
+   
+        position: absolute;
+        width:100%;
+        left:205px;
+        top:0%;
+        margin-left:1rem;
+        
+        }
+
+
+    .csssetting:hover{
+        background-color:lightskyblue;
+    }
+.csssetting{
+    
+    border-bottom:1px solid darkgrey;
+    border-radius:3%;
+    color:grey;
+    font-weight: 300;
+    
+  
+}
+.node_container{
+    height:200px;
+   width:200px;
+    overflow: scroll;
+}
+
+#heading{
+    color:white;
+    background-color: #3F51B5;
+        text-align: center;
+    
+}
+
+   
+    

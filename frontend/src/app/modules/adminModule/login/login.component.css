@@ -1,0 +1,13 @@
+mat-form-field{
+    display:block;
+}
+
+.signin{
+    margin:1rem;
+}
+
+.flexcontainer{
+    display:flex;
+    justify-content: center;
+    margin-top:1rem;
+}

@@ -1,0 +1,53 @@
+<mat-toolbar id="heading" color="primary">
+  <span class='headingData'>DATA TABLE
+    </span>
+
+    <button  mat-raised-button type="button" color='accent' (click)='pushChanges()'>Push Changes</button>
+
+  
+</mat-toolbar>
+
+
+
+<div style="width: 100" class="example-container mat-elevation-z8">
+
+
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container *ngFor="let col of columns" matColumnDef={{col}}>
+  
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{col}}</mat-header-cell>
+      <mat-cell  *matCellDef="let row" ><button mat-raised-button (click)="redirectToImageUpload(row,row['imageUrls'])" [color]="primary" *ngIf="col=='Other Data'">Manage Data</button> <p *ngIf="col!='Other Data'">{{row[col]}}</p></mat-cell>
+    
+    </ng-container>
+    
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="addNew(dataSource)">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent" (click)="startEdit(row,i,dataSource)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteItem(row,i,dataSource)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <div class="no-results" [style.display]="dataSource.length == 0 ? '' : 'none'">
+    No results
+  </div>
+
+</div>

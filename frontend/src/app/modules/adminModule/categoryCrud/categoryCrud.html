@@ -1,0 +1,56 @@
+<adminheader></adminheader>
+
+<div class="flexcontainer">
+    <div id="category_container">
+    <div id="heading">CATEGORY LIST</div>  
+            <div id="categorylist">
+<div class="parentNode">
+                <div  *ngFor="let categorylist of category ; let i=index">
+                        <div class="data_section">
+                              
+                                <button mat-button class="csssetting" (click)=editorAdd(category) blockShow>{{categorylist.categoryName}}</button>
+                         <div class="hide firstNodeItem">
+                                <div class="node_container" >
+                    <div  *ngFor="let subcategory of categorylist.subcategory" >
+                 <div class="data_section">
+                        
+                            <button mat-button class="dataEntry csssetting" (click)=editorAdd(categorylist.subcategory) blockShow>{{subcategory.subcategoryName}}</button> 
+                           
+                            <div class="hide secondNodeItem" >
+                                <div class="node_container">
+                  <div *ngFor="let products of subcategory.products">
+                        <div class="data_section">
+                               
+                            <button mat-button (click)=editorAdd(subcategory.products) class="dataEntry csssetting" blockShow>{{products.productName}}</button>
+                            <div class="hide thirdNodeItem" >
+                                    <div class="node_container">
+                      <div *ngFor="let subproduct of products.subProducts">
+                            <div class="data_section">
+                                   
+                                <button mat-button (click)=editorAdd(products.subProducts) class="dataEntry csssetting" toggle>{{subproduct.subproductName}}</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+               
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+         
+        </div>
+        </div>
+    </div>
+
+        <div class="table_content">
+        <tablehere></tablehere>
+    </div>
+    </div>
+        
+

@@ -1,0 +1,23 @@
+<div class="flexcontainer">
+
+    <form id="categorylist" >
+        <div  *ngFor="let categorylist of category ; let i=index">
+                <div class="data_section">
+                        <mat-checkbox toggle>{{categorylist.categoryName}}</mat-checkbox>
+                 <div class="hide" >
+            <div *ngFor="let subcategory of categorylist.subcategory" >
+         <div class="data_section">
+                    <mat-checkbox class="sub_head" mat-button toggle>{{subcategory.subcategoryName}}</mat-checkbox> 
+        <div class="hide" >
+          <div *ngFor="let products of subcategory.products">
+                <div class="data_section"><mat-checkbox class="final_data" (change)='pushObject(categorylist.categoryId,categorylist.categoryName,subcategory.subcategoryId,subcategory.subcategoryName,products.productId,products.productName,$event)' mat-button>{{products.productName}}</mat-checkbox></div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+</form>
+</div>

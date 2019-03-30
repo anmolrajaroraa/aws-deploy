@@ -1,0 +1,68 @@
+<employeeheader></employeeheader>
+<div class="flexcontainer">
+  <div class="userplancontainer">
+<mat-tab-group mat-align-tabs="center">
+  
+  <mat-tab label="Renewal"> 
+    <mat-grid-list cols="2" rowHeight="2em">
+      
+      <mat-grid-tile class="title" *ngFor = "let data of RenewalData">
+        <mat-radio-group [(ngModel)]="renewalplan">
+       <mat-radio-button class="radio_customize" [value]="data.title">{{data.title}}</mat-radio-button>
+        </mat-radio-group>
+      </mat-grid-tile>
+       
+      <mat-grid-tile class="radio_customize charges" *ngFor = "let data of RenewalData">{{data.charges}}</mat-grid-tile>
+      
+    </mat-grid-list>
+    <logindetails></logindetails>
+  </mat-tab>
+
+        <mat-tab label ="Subscription">
+            <mat-error *ngIf="!subscriptionplan" class="error_message_display">{{error_message_display}}</mat-error>
+          <mat-grid-list cols="2" rowHeight="2em">
+          
+        <mat-grid-tile class="title" *ngFor = "let data of SubscriberData">
+             
+          <mat-radio-group [(ngModel)]="subscriptionplan">
+             <mat-radio-button class="radio_customize"  [value]="data.title">{{data.title}}</mat-radio-button>
+              </mat-radio-group>
+            </mat-grid-tile>
+      
+            <mat-grid-tile class="radio_customize charges" *ngFor = "let data of SubscriberData">{{data.charges}}</mat-grid-tile>
+          </mat-grid-list>
+         
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+              <mat-step>
+                  <ng-template matStepLabel>Fill Your Details</ng-template>
+                  <userDetails  [subscription] = "subscriptionplan" (errorMessage)="handleError($event)" > </userDetails>
+                  <div>
+                  
+                      <button mat-button matStepperNext>Next</button>
+                    </div>
+              </mat-step>
+              <mat-step>
+                  <ng-template matStepLabel>Payment </ng-template>
+              Payment
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                  </div>
+                
+              </mat-step>
+              <mat-step>
+                <ng-template matStepLabel>OTP Verification</ng-template>
+                
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  
+                </div>
+              </mat-step>
+            </mat-vertical-stepper>
+         
+        </mat-tab>
+</mat-tab-group>
+
+
+</div>
+</div>

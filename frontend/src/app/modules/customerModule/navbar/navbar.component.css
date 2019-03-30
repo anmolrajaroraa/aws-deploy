@@ -1,0 +1,41 @@
+#navbar-container{
+    margin:0rem 3rem;
+    width:70%;
+}
+
+
+::ng-deep .material-icons{
+font-size: 1rem !important;
+    
+}
+
+#showcategory:hover #categoryMenu{
+display:block;
+}
+
+#menu-container{
+    width:100%;
+    background-color:#72A02A;
+}
+
+
+
+.navbttn{
+    color:black;
+ width:100%;
+}
+#categorylist-container{
+color:white;
+
+
+}
+
+.navbttn:hover{
+    color:white;
+    background-color:#72A02A;
+}
+
+#showcategory{
+    position: relative;
+}
+

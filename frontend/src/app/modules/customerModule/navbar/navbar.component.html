@@ -1,0 +1,47 @@
+<div id='navbar'>
+  <div id='navbar-container'>
+
+<mat-grid-list cols="5" rowHeight="2:0.75">
+  <mat-grid-tile>
+    <div id='menu-container'>
+      <button mat-button [matMenuTriggerFor]="main_menu" id='categorylist-container'>SHOW BY CATEGORY<mat-icon>keyboard_arrow_down</mat-icon></button>
+
+      <mat-menu #main_menu="matMenu">
+        <ng-container *ngFor="let category of categorylist">
+          <button mat-menu-item [matMenuTriggerFor]="categories">{{ category.categoryName }}</button>
+          <mat-menu #categories="matMenu" >
+             <ng-container *ngFor="let subcategory of category.subcategory">
+              <button mat-menu-item [matMenuTriggerFor]="subcategories">{{ subcategory.subcategoryName }}</button>
+              <mat-menu #subcategories="matMenu">
+                <ng-container *ngFor="let products of subcategory.products">
+                 <button mat-menu-item [matMenuTriggerFor]="productlist">{{ products.productName }}</button>
+                 <mat-menu #productlist="matMenu">
+                  <button *ngFor="let subproducts of products.subProducts" mat-menu-item>{{ subproducts.subproductName }}</button>
+                  
+               </mat-menu>
+                </ng-container>
+             </mat-menu>
+             </ng-container>
+          </mat-menu>
+        </ng-container>
+      </mat-menu>
+    
+
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-button class='navbttn' >
+        OFFERS
+    </button></mat-grid-tile>
+  <mat-grid-tile> <button mat-button class='navbttn'>
+      EXPRESS
+  </button></mat-grid-tile>
+  <mat-grid-tile> <button mat-button class='navbttn'>
+      SPECIALITY
+  </button></mat-grid-tile>
+  <mat-grid-tile><button mat-button class='navbttn' >
+    OTHERS
+  </button></mat-grid-tile>
+</mat-grid-list>
+  </div>
+</div>

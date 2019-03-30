@@ -1,0 +1,48 @@
+
+.flexcontainer{
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+.title{
+  width:120%;
+
+}
+mat-grid-list{
+  margin-top:1rem;
+}
+
+.mat-form-field input{
+  height :10px;
+}
+
+.radio_customize{
+  
+  padding: 1rem 0rem 0rem 0rem;
+} 
+
+.signupContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.userplancontainer{
+  margin:0px auto;
+  
+border-bottom-right-radius:3%;
+border-bottom-left-radius: 3%;
+
+}
+
+ .error_message_display{
+background-color:lightcoral;
+color:white;
+ }
+
+ ::ng-deep .mat-vertical-content{
+   padding:0px !important;
+ }

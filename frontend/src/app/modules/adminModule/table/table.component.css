@@ -1,0 +1,29 @@
+#heading{
+    display: flex;
+    text-align: center;
+    
+}
+
+.headingData{
+    width:20%;
+    margin:0.5rem auto;
+
+}
+
+::ng-deep .mat-toolbar-single-row{
+    height:inherit !important;
+}
+
+.example-container {
+    overflow-x: scroll;
+  }
+
+  .example-container {
+    height: 300px;
+    overflow: auto;
+  }
+  
+
+  .mat-cell, .mat-footer-cell, .mat-header-cell{
+    justify-content: center;
+  }

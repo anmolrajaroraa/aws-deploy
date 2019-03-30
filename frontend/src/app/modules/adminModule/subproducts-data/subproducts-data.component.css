@@ -1,0 +1,44 @@
+.flexcontainer{
+    display: flex;
+    justify-content: space-between;
+}
+.flexcontainer div{
+    margin:0.1rem;
+}
+
+.flexcontainer .mat-form-field{
+    width:100%;
+    
+}
+
+#dataEntry{
+    overflow:scroll;
+}
+
+#description{
+    margin-right:1rem;
+    width:40%;
+}
+
+#benefitsAndUses{
+    width:40%;
+    margin-right: 1rem;
+}
+
+
+
+.amount{
+    width:23%;
+}
+
+.suffix{
+    width:20%;
+
+}
+
+.price{
+    width:18%;
+}
+ .discount{
+     width:18%;
+ }
